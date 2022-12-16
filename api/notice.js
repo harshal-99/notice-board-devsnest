@@ -10,13 +10,14 @@ noticeRouter.get('/', (req, res) => {
 
 noticeRouter.post('/', (req, res) => {
 	const {author, message} = req.body
+	if(!author) return res.status(400).send({message: "Author is required"})
 	const newNotice = {
 		author,
 		message,
 		likes: 0
 	}
 	noticeService.addNotice(newNotice)
-	res.send(newNotice)
+	res.status(201).send(newNotice)
 })
 
 noticeRouter.put('/:id/like', (req, res) => {
