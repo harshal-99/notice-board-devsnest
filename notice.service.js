@@ -4,6 +4,7 @@ let notice = []
 
 const addNotice = (message) => {
 	notice.push({...message, date: new Date(), id: uuid()})
+	return notice.at(-1);
 }
 
 const getNotice = () => {
