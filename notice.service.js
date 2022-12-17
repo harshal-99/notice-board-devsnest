@@ -22,11 +22,17 @@ const likeNotice = (id) => {
 	return foundNotice
 }
 
+const getNoticeById = (id) => {
+	const foundNotice = notice.find((notice) => notice.id === id)
+	return foundNotice;
+}
+
 const noticeService = {
 	addNotice,
 	getNotice,
 	clearNotice,
-	likeNotice
+	likeNotice,
+	getNoticeById
 }
 
 export default noticeService

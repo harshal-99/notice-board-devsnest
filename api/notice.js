@@ -22,6 +22,13 @@ noticeRouter.post('/', (req, res) => {
 	res.status(201).send(savedNotice)
 })
 
+noticeRouter.get('/:id', (req, res) => {
+	const {id} = req.params
+	const foundNotice = noticeService.getNoticeById(id)
+	if (!foundNotice) return res.status(404).send({message: "Notice not found"})
+	res.send(foundNotice)
+})
+
 noticeRouter.put('/:id/like', (req, res) => {
 	const notice = noticeService.likeNotice(req.params.id)
 	if (!notice) return res.status(404).send({error: "Notice not found"})
